@@ -1,0 +1,25 @@
+{
+  "name": "sass-doc",
+  "version": "0.0.0",
+  "description": "Automatically generate documentation for Sass files.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/optimizely/sass-doc.git"
+  },
+  "keywords": [
+    "sass",
+    "scss",
+    "documentation",
+    "css"
+  ],
+  "author": "Daniel O'Connor <daniel@danoc.me> (https://danoc.me/)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/optimizely/sass-doc/issues"
+  },
+  "homepage": "https://github.com/optimizely/sass-doc"
+}
