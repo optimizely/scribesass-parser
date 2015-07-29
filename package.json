@@ -23,6 +23,8 @@
   },
   "homepage": "https://github.com/optimizely/sass-doc",
   "dependencies": {
-    "optimizely-lego": "0.0.2"
+    "glob": "^5.0.14",
+    "optimizely-lego": "0.0.2",
+    "shelljs": "^0.5.1"
   }
 }
