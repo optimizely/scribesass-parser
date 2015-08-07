@@ -23,9 +23,12 @@
   },
   "homepage": "https://github.com/optimizely/sass-doc",
   "dependencies": {
+    "async": "^1.4.0",
+    "file-importer": "0.0.6",
     "glob": "^5.0.14",
-    "optimizely-lego": "0.0.2",
-    "sassdoc": "^2.1.15",
+    "gonzales-pe": "git://github.com/tonyganch/gonzales-pe.git#dev",
+    "optimizely-lego": "git+ssh://git@github.com/optimizely/lego.git",
+    "scsscommentparser": "git+ssh://git@github.com:optimizely/scss-comment-parser.git",
     "shelljs": "^0.5.1"
   }
 }
