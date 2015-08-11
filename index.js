@@ -4,6 +4,7 @@ var shell = require('shelljs');
 var fs = require('fs');
 var lexer = require('gonzales-pe');
 var fileImporter = require('file-importer');
+var sass = require('node-sass');
 var util = require('util');
 
 var concatFiles = function(files, base, next) {
@@ -28,6 +29,15 @@ var scssToAST = function(scss, next) {
   });
 
   next(null, ast);
+}
+
+var isSassValid = function(scss, base, next) {
+  sass.render({
+    includePaths: [base],
+    data: scss,
+  }, function(err, result) {
+    next(err, scss, base);
+  });
 }
 
 var followImports = function(scss, base, next) {
@@ -57,9 +67,16 @@ module.exports = function(base) {
   async.waterfall([
     getFiles.bind(this, globPattern, globOptions, base),
     concatFiles,
+    isSassValid,
     followImports,
     scssToAST,
-  ]);
+  ], function(err, result) {
+    if (err) {
+      dd(err);
+    }
+
+    dd(result);
+  });
 }
 
 module.exports('node_modules/optimizely-lego/src/core/');
