@@ -27,6 +27,7 @@
     "file-importer": "0.0.6",
     "glob": "^5.0.14",
     "gonzales-pe": "git://github.com/tonyganch/gonzales-pe.git#dev",
+    "is-number": "^2.0.2",
     "node-sass": "^3.2.0",
     "optimizely-lego": "git+ssh://git@github.com/optimizely/lego.git",
     "scsscommentparser": "git+ssh://git@github.com:optimizely/scss-comment-parser.git",
