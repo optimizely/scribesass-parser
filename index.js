@@ -1,30 +1,18 @@
 var async = require('async');
-var fileImporter = require('file-importer');
+var dd = require('./lib/utils').dd;
 var fs = require('fs');
 var glob = require('glob');
+var imports = require('./lib/imports');
 var isNumber = require('is-number');
 var lexer = require('gonzales-pe');
 var sass = require('node-sass');
 var shell = require('shelljs');
-var util = require('util');
 
 var COMMENT_TYPE = 'singlelineComment';
 var SYNTAX = 'scss';
 
-var concatFiles = function(files, base, next) {
-  var text = '';
-
-  for (var i = 0; i < files.length; i++) {
-    text += fs.readFileSync(files[i], { encoding: 'utf-8' });
-  }
-
-  next(null, text, base);
-}
-
-var getFiles = function(pattern, options, base, next) {
-  glob(base + pattern, options, function(err, files) {
-    next(err, files, base);
-  });
+var getFile = function(file) {
+  return fs.readFileSync(file, { encoding: 'utf-8' });
 }
 
 var getFileLevelCommentNodes = function(ast) {
@@ -54,10 +42,20 @@ var getFileLevelCommentNodes = function(ast) {
   return commentNodes;
 };
 
-var getJSON = function(ast, next) {
-  var fileLevelJSON = getFileLevelJSON(ast);
+/**
+ * @param {Object[]} files - Files that need processing.
+ * @param {string} files[].path - Path to the file.
+ * @param {string} files[].ast - The file's AST.
+ * @param {next} next
+ */
+var getJSON = function(files, next) {
+  for (var i = 0; i < files.length; i++) {
+    var ast = files[i].ast;
 
-  next(null, fileLevelJSON);
+    files[i].json = getFileLevelJSON(ast);
+  }
+
+  next(null, files);
 }
 
 var getFileLevelJSON = function(ast) {
@@ -74,20 +72,39 @@ var isFileLevelCommentDelimeter = function(node, index) {
   return false;
 }
 
-var scssToAST = function(scss, next) {
-  var ast = lexer.parse(scss, {
-    syntax: SYNTAX,
-  });
 
-  next(null, ast);
+/**
+ * Take an array of files and returns an array that contains the file path
+ * and an AST.
+ */
+var scssToAST = function(files, next) {
+  var arr = [];
+
+  for (var i = 0; i < files.length; i++) {
+    var file = files[i];
+    var scss = getFile(file);
+    var ast = lexer.parse(scss, {
+      syntax: SYNTAX,
+    });
+
+    arr.push({
+      path: file,
+      ast: ast,
+    });
+  }
+
+  next(null, arr);
 }
 
-var isSassValid = function(scss, base, next) {
+/**
+ * Compile the SCSS to see if there are any errors in the source that
+ * could prevent this from working.
+ */
+var isSassValid = function(file, next) {
   sass.render({
-    includePaths: [base],
-    data: scss,
+    file: file,
   }, function(err, result) {
-    next(err, scss, base);
+    next(err, file);
   });
 }
 
@@ -164,17 +181,6 @@ var parseAnnotation = function(string) {
   return arr;
 }
 
-var followImports = function(scss, base, next) {
-  var options = {
-    data: scss,
-    cwd: base,
-  }
-
-  fileImporter.parse(options, function(err, fullSCSS) {
-    next(err, fullSCSS);
-  });
-}
-
 var removeInitialSlashes = function(str) {
   while(str.match('^/')) {
     str = str.substring(1);
@@ -183,27 +189,14 @@ var removeInitialSlashes = function(str) {
   return str;
 };
 
-var dd = function(obj) {
-  var expandedObj = obj;
-  if (obj !== null && typeof obj === 'object') {
-    expandedObj = util.inspect(obj, false, null);
-  }
-  console.log(expandedObj);
-}
-
-module.exports = function(base) {
-  var ast = {};
-  var globPattern = '**/core.scss';
-  var globOptions = {
-    cwd: shell.pwd(),
-    matchBase: true,
-  }
-
+module.exports = function(file) {
+  // 1. Return main Sass file's path and see if it is valid.
+  // 2. Return an array of all of the imported files based on source order.
+  // 3. Return the an array with the path and AST of each file.
+  // 4. Turn that info JSON.
   async.waterfall([
-    getFiles.bind(this, globPattern, globOptions, base),
-    concatFiles,
-    isSassValid,
-    followImports,
+    isSassValid.bind(this, file),
+    imports,
     scssToAST,
     getJSON,
   ], function(err, result) {
@@ -211,8 +204,8 @@ module.exports = function(base) {
       dd(err);
     }
 
-    dd(result);
+    console.log(result);
   });
 }
 
-module.exports('node_modules/optimizely-lego/src/core/');
+module.exports('node_modules/optimizely-lego/src/core/core.scss');
