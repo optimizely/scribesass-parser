@@ -113,6 +113,8 @@ var isSassValid = function(file, next) {
  */
 var parseCommentNodes = function(nodes) {
   var lines = [];
+  var start;
+  var end;
 
   // Create a parent node
   ast = lexer.createNode({
@@ -120,6 +122,9 @@ var parseCommentNodes = function(nodes) {
     content: nodes,
     syntax: SYNTAX,
   });
+
+  start = ast.first().start;
+  end = ast.last().end;
 
   ast.forEach(COMMENT_TYPE, function(node) {
     var content = removeInitialSlashes(node.content).trim();
@@ -129,13 +134,13 @@ var parseCommentNodes = function(nodes) {
     }
   });
 
-  return parseCommentLines(lines);
+  return parseCommentLines(lines, start, end);
 };
 
 /**
  * Returns an object of an annotation for a line in an SCSS comment.
  */
-var parseCommentLines = function(lines) {
+var parseCommentLines = function(lines, start, end) {
   // Track if an annotation has already been found in the comment nodes. This
   // means that the following lines that don't look like annotations will be
   // treated as new lines in the previous annotation, not part of the
@@ -145,7 +150,10 @@ var parseCommentLines = function(lines) {
   var mostRecentAnnotation = null;
   // Default annotations
   var obj = {
+    'name': '',
     'description': '',
+    'start': start,
+    'end': end,
   };
 
   for (var i = 0; i < lines.length; i++) {
@@ -162,8 +170,8 @@ var parseCommentLines = function(lines) {
       // Annotation continues onto a new line
       obj[mostRecentAnnotation] += '\n' + lines[i];
     } else {
-      // Annotation is a description
-      obj['description'] += lines[i] + '\n';
+      // Annotation is a name
+      obj['name'] += lines[i] + '\n';
     }
   }
 
@@ -204,7 +212,7 @@ module.exports = function(file) {
       dd(err);
     }
 
-    console.log(result);
+    dd(result);
   });
 }
 
