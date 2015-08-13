@@ -72,7 +72,6 @@ var isFileLevelCommentDelimeter = function(node, index) {
   return false;
 }
 
-
 /**
  * Take an array of files and returns an array that contains the file path
  * and an AST.
@@ -90,6 +89,7 @@ var scssToAST = function(files, next) {
     arr.push({
       path: file,
       ast: ast,
+      scss: scss,
     });
   }
 
