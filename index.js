@@ -64,7 +64,7 @@ module.exports = function(file) {
       dd(err);
     }
 
-    console.log(result);
+    dd(result);
   });
 }
 
