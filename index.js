@@ -60,11 +60,10 @@ module.exports = function(file) {
     scssToAST,
     parse,
   ], function(err, result) {
-    if (err) {
-      dd(err);
-    }
-
-    dd(result);
+    return {
+      error: err,
+      data: result,
+    };
   });
 }
 
