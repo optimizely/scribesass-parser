@@ -4,6 +4,7 @@
   "description": "Automatically generate documentation for Sass files.",
   "main": "index.js",
   "scripts": {
+    "postinstall": "cd node_modules/gonzales-pe/ && npm install && ./scripts/build.sh && cd ../../",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
