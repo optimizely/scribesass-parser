@@ -49,7 +49,7 @@ var scssToAST = function(files, next) {
   next(null, arr);
 }
 
-module.exports = function(file) {
+module.exports = function(file, next) {
   // 1. Return main Sass file's path and see if it is valid.
   // 2. Return an array of all of the imported files based on source order.
   // 3. Return the an array with the path and AST of each file.
@@ -59,12 +59,7 @@ module.exports = function(file) {
     imports,
     scssToAST,
     parse,
-  ], function(err, result) {
-    return {
-      error: err,
-      data: result,
-    };
-  });
+  ], next);
 }
 
 // For debugging purposes:
