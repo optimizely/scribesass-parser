@@ -68,4 +68,5 @@ module.exports = function(file) {
   });
 }
 
-module.exports('node_modules/optimizely-lego/src/core/core.scss');
+// For debugging purposes:
+// module.exports('node_modules/optimizely-lego/src/core/core.scss');
