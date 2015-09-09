@@ -1,7 +1,7 @@
 {
-  "name": "sass-doc",
+  "name": "ScribeSass Parser",
   "version": "0.0.0",
-  "description": "Automatically generate documentation for Sass files.",
+  "description": "Parse SCSS comments and return a JSON object.",
   "main": "index.js",
   "scripts": {
     "postinstall": "cd node_modules/gonzales-pe/ && npm install && ./scripts/build.sh && cd ../../",
