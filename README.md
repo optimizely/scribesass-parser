@@ -49,6 +49,7 @@ This script parses files and finds annotations in comments. These are the suppor
 * **Allowed on files:** Yes
 * **Notes:** None
 * **Example:**
+
   ```
   // @example html - Image that has a standard border around it.
   //   <img src="http://fillmurray.com/100/100" class="img--border">
