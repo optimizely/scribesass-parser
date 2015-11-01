@@ -4,7 +4,6 @@
   "description": "Parse SCSS comments and return a JSON object.",
   "main": "index.js",
   "scripts": {
-    "postinstall": "cd node_modules/gonzales-pe/ && npm install && ./scripts/build.sh && cd ../../",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -26,11 +25,11 @@
   "dependencies": {
     "async": "^1.4.0",
     "glob": "^5.0.14",
-    "gonzales-pe": "git://github.com/tonyganch/gonzales-pe.git#4532f185530ea104f637a14bace2eeee9ceaa815",
+    "gonzales-pe": "^3.2.1",
     "is-number": "^2.0.2",
     "lodash": "^3.10.1",
     "node-sass": "^3.2.0",
-    "optimizely-lego": "git+ssh://git@github.com/optimizely/lego.git#daniel/comments",
+    "oui": "git+ssh://git@github.com/optimizely/oui.git#daniel/comments",
     "sass-mapper": "^1.0.0",
     "shelljs": "^0.5.1"
   }
