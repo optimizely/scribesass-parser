@@ -6,6 +6,7 @@ var glob = require('glob');
 var lexer = require('gonzales-pe');
 var imports = require('./lib/imports');
 var parse = require('./lib/parse');
+var files = require('./lib/files');
 var sass = require('node-sass');
 var shell = require('shelljs');
 
@@ -65,6 +66,9 @@ module.exports = {
   getComments: function(ast) {
     return parse.getComments(ast);
   },
+  getGroups: function(filesArray) {
+    return files.getGroups(filesArray);
+  },
   getFileProperties: function(ast) {
     return parse.getFileProperties(ast);
   },
@@ -76,4 +80,5 @@ module.exports.create('node_modules/optimizely-lego/src/core/core.scss', functio
   // dd(module.exports.getScss(files[0].ast));
   // dd(module.exports.getComments(files[0].ast));
   // dd(module.exports.getFileProperties(files[0].ast));
+  // dd(module.exports.getGroups(files));
 });
