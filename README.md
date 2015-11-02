@@ -64,6 +64,9 @@ var scribeSass = require('scribesass-parser');
 
 // Provide path to a file and receive an array of files containing `path` and `ast` properties.
 scribeSass.create('main.scss', function(files) {
+  // Get an object of group objects containing file objects.
+  var groups = scribeSass.getGroups(files);
+
   // Loop through the files.
   for (var i = 0; i < files.length; i++) {
     // Path to the file.
