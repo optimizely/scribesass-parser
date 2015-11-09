@@ -75,7 +75,8 @@ module.exports = {
 }
 
 // For debugging purposes:
-// module.exports.create('node_modules/optimizely-lego/src/core/core.scss', function(err, files) {
+// module.exports.create('node_modules/optimizely-oui/src/core/core.scss', function(err, files) {
+//   console.log(files);
 //   dd(files[0].path);
 //   dd(module.exports.getScss(files[0].ast));
 //   dd(module.exports.getComments(files[0].ast));

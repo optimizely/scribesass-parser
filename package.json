@@ -4,7 +4,8 @@
   "description": "Parse SCSS comments and return a JSON object.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "postinstall": "cd node_modules/gonzales-pe && npm install && npm run init"
   },
   "repository": {
     "type": "git",
@@ -25,11 +26,11 @@
   "dependencies": {
     "async": "^1.4.0",
     "glob": "^5.0.14",
-    "gonzales-pe": "3.2.1",
+    "gonzales-pe": "optimizely/gonzales-pe#daniel/dev",
     "is-number": "^2.0.2",
     "lodash": "^3.10.1",
     "node-sass": "^3.2.0",
-    "oui": "git+ssh://git@github.com/optimizely/oui.git#daniel/comments",
+    "optimizely-oui": "optimizely/oui#daniel/scribesass",
     "sass-mapper": "^1.0.0",
     "shelljs": "^0.5.1"
   }
