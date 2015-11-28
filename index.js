@@ -61,7 +61,7 @@ module.exports = {
     ], next);
   },
   getScss: function(ast) {
-    return ast.toString('scss');
+    return ast.toString();
   },
   getComments: function(ast) {
     return parse.getComments(ast);

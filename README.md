@@ -80,10 +80,10 @@ scribeSass.create('main.scss', function(err, files) {
 
     // Get array of parsed comment objects and ASTs from AST.
     // ```js
-    // comments = {
+    // comments = [{
     //   properties = {...},
     //   ast = {...},
-    // }
+    // }]
     // ```
     var comments = scribeSass.getComments(files[i].ast);
   }
