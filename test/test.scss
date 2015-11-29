@@ -5,18 +5,12 @@
 ////
 
 /// Colors
-/// @description Default color for objects' borders etc.
-/// **Important:** Do not use these values directly in your Sass files.
-/// Use the more specifically named variables below that use these root values.
-
 $base-black                  : #000;
 $base-white                  : #FFF;
 
+/// ---
 
-
-
-
-
+/// ROOT COLOR
 $root-color: (
   grey-85                    : tint($base-black, 15%),
 );
