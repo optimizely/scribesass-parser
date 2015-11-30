@@ -10,10 +10,14 @@
 ////
 
 /// Charset
+/// @description D1 FTW.
+/// Line 2
 /// @example[scss]
 ///   .element {
 ///     @include prefixer(border-radius, 10px, webkit ms spec);
 ///   }
+/// @example[html]
+///   <div>Helloooo!</div>
 @charset 'UTF-8';
 
 
