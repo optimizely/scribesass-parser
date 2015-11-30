@@ -1,18 +1,17 @@
 ////
-/// Core
-/// @description Root file compiling only Core CSS.
-/// @group Main
+/// Prefixer
+/// @description A mixin for generating vendor prefixes on non-standardized
+/// properties.
+/// @example[scss]
+///   .element {
+///     @include prefixer(border-radius, 10px, webkit ms spec);
+///   }
+/// @group Polyfills & Mixins
 ////
 
-/// Colors
-/// @example[html] Description
-///   Code Sample
-$base-black                  : #000;
-$base-white                  : #FFF;
-
-/// ---
-
-/// ROOT COLOR
-$root-color: (
-  grey-85                    : tint($base-black, 15%),
-);
+/// Charset
+/// @example[scss]
+///   .element {
+///     @include prefixer(border-radius, 10px, webkit ms spec);
+///   }
+@charset 'UTF-8';
