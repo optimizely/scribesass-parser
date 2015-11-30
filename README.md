@@ -39,7 +39,7 @@ This script parses files and finds annotations in comments. These are the suppor
 * **Notes:** None
 
 
-### @example
+### @example[language]
 
 * **Description:** Provide an example for the documented item.
 * **Default:** None
@@ -51,7 +51,7 @@ This script parses files and finds annotations in comments. These are the suppor
 * **Example:**
 
   ```sass
-  // @example html - Image that has a standard border around it.
+  // @example[html] Image that has a standard border around it.
   //   <img src="http://fillmurray.com/100/100" class="img--border">
   ```
 
