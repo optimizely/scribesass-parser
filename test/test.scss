@@ -1,23 +1,11 @@
-////
-/// Prefixer
-/// @description A mixin for generating vendor prefixes on non-standardized
-/// properties.
-/// @example[scss]
-///   .element {
-///     @include prefixer(border-radius, 10px, webkit ms spec);
-///   }
-/// @group Polyfills & Mixins
-////
+/// Compass polyfills
+/// @description Line 1
+/// Line 2!
+.foo {
+  color: red;
+}
 
-/// Charset
-/// @description D1 FTW.
-/// Line 2
-/// @example[scss] Description 1
-/// Description 2
-///   .element {
-///     @include prefixer(border-radius, 10px, webkit ms spec);
-///   }
-@charset 'UTF-8';
-
-
-/// ---
+/// One more comment?
+.bar {
+  color: blue;
+}
