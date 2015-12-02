@@ -60,7 +60,10 @@ module.exports = {
       scssToAST,
     ], next);
   },
-  getScss: function(ast) {
+  getScss: function(ast, removeAnnotations) {
+    if (removeAnnotations) {
+      ast = parse.removeASTAnnotations(ast);
+    }
     return ast.toString();
   },
   getComments: function(ast) {
@@ -79,6 +82,7 @@ module.exports = {
 //   console.log(files);
 //   dd(files[0].path);
 //   dd(module.exports.getScss(files[0].ast));
+//   dd(module.exports.getScss(files[0].ast, true));
 //   dd(module.exports.getComments(files[0].ast));
 //   dd(module.exports.getFileProperties(files[0].ast));
 //   dd(module.exports.getGroups(files));
