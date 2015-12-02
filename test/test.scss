@@ -1,6 +1,13 @@
-/// Compass polyfills
-/// @description Line 1
-/// Line 2!
+////
+/// Transitions
+/// @description Shorthand mixin for transforms. Supports multiple
+/// parentheses-deliminated values for each variable.
+/// @example[scss]
+///   @include transition (all 2s ease-in-out);
+///   @include transition (opacity 1s ease-in 2s, width 2s ease-out);
+///   @include transition-property (transform, opacity);
+/// @group Polyfills & Mixins
+////
 .foo {
   color: red;
 }
