@@ -5,11 +5,10 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "postinstall": "cd ./node_modules/gonzales-pe && npm install && npm run init"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/optimizely/sass-doc.git"
+    "url": "https://github.com/optimizely/scribesass-parser.git"
   },
   "keywords": [
     "sass",
@@ -20,9 +19,9 @@
   "author": "Daniel O'Connor <daniel@danoc.me> (https://danoc.me/)",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/optimizely/sass-doc/issues"
+    "url": "https://github.com/optimizely/scribesass-parser/issues"
   },
-  "homepage": "https://github.com/optimizely/sass-doc",
+  "homepage": "https://github.com/optimizely/scribesass-parser",
   "dependencies": {
     "async": "^1.4.0",
     "glob": "^5.0.14",
