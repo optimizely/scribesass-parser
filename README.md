@@ -39,7 +39,7 @@ This script parses files and finds annotations in comments. These are the suppor
 * **Notes:** None
 
 
-### @example[language]
+### @example[type]
 
 * **Description:** Provide an example for the documented item.
 * **Default:** None
