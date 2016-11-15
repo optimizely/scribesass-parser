@@ -17,7 +17,7 @@
     "css"
   ],
   "bin": {
-    "scribesass": "./cli.js"
+    "scribesass": "node cli.js"
   },
   "author": "Daniel O'Connor <daniel@danoc.me> (https://danoc.me/)",
   "license": "ISC",
