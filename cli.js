@@ -26,18 +26,21 @@ if (!fs.existsSync(input)) {
 }
 
 scribesass.create(input, (err, fileArr) => {
-  fileArr.map((file) => {
-    file.properties = scribesass.getFileProperties(file.ast);
-    delete file.ast;
-  });
+  const groups = scribesass.getGroups(fileArr);
+  var files;
+
+  for (groupName in groups) {
+    files = groups[groupName];
+
+    files.map((file) => {
+      file.properties = scribesass.getFileProperties(file.ast);
+      delete file.ast;
+    });
+  }
 
   if (commander.outFile) {
-    fs.writeFileSync(commander.outFile, JSON.stringify(fileArr));
+    fs.writeFileSync(commander.outFile, JSON.stringify(groups));
   } else {
-    console.log(util.inspect(fileArr, { depth: null }));
+    console.log(util.inspect(groups, { depth: null }));
   }
-  // console.log(fileArr);
-  // console.log(scribesass.getFileProperties(fileArr[0].ast));
-  // console.log(scribesass.getComments(fileArr[0].ast));
-  // console.log(util.inspect(fileArr, { depth: null }));
 });
