@@ -32,7 +32,7 @@ scribesass.create(input, (err, fileArr) => {
   });
 
   if (commander.outFile) {
-    fs.writeFileSync(commander.outFile, util.inspect(fileArr, { depth: null }));
+    fs.writeFileSync(commander.outFile, JSON.stringify(fileArr));
   } else {
     console.log(util.inspect(fileArr, { depth: null }));
   }
