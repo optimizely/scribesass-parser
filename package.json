@@ -16,6 +16,9 @@
     "documentation",
     "css"
   ],
+  "bin": {
+    "scribesass": "./cli.js"
+  },
   "author": "Daniel O'Connor <daniel@danoc.me> (https://danoc.me/)",
   "license": "ISC",
   "bugs": {
@@ -24,8 +27,9 @@
   "homepage": "https://github.com/optimizely/scribesass-parser",
   "dependencies": {
     "async": "^1.4.0",
+    "commander": "^2.9.0",
     "glob": "^5.0.14",
-    "gonzales-pe": "optimizely/gonzales-pe#daniel/dev",
+    "gonzales-pe": "3.4.7",
     "is-number": "^2.0.2",
     "lodash": "^3.10.1",
     "node-sass": "^3.2.0",
