@@ -15,18 +15,6 @@ var getFile = function(file) {
 }
 
 /**
- * Compile the SCSS to see if there are any errors in the source that
- * could prevent this from working.
- */
-var isSassValid = function(file, next) {
-  sass.render({
-    file: file,
-  }, function(err, result) {
-    next(err, file);
-  });
-}
-
-/**
  * Take an array of files and returns an array that contains the file path
  * and an AST.
  */
@@ -55,8 +43,7 @@ module.exports = {
     // 2. Return an array of all of the imported files based on source order.
     // 3. Return an array with the path and AST of each file.
     async.waterfall([
-      isSassValid.bind(this, file),
-      imports,
+      imports.bind(this, file),
       scssToAST,
     ], next);
   },
@@ -77,7 +64,7 @@ module.exports = {
   },
 }
 
-// For debugging purposes:
+// // For debugging purposes:
 // module.exports.create('test/test.scss', function(err, files) {
 //   console.log(files);
 //   dd(files[0].path);
