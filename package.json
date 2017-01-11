@@ -16,6 +16,9 @@
     "documentation",
     "css"
   ],
+  "engines": {
+    "npm": ">=3.0.0" 
+  },
   "bin": "./cli.js",
   "author": "Daniel O'Connor <daniel@danoc.me> (https://danoc.me/)",
   "license": "ISC",
