@@ -1,6 +1,6 @@
 {
   "name": "scribesass-parser",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Parse SCSS comments and return a JSON object.",
   "main": "index.js",
   "scripts": {
@@ -17,7 +17,7 @@
     "css"
   ],
   "engines": {
-    "npm": ">=3.0.0" 
+    "npm": ">=3.0.0"
   },
   "bin": "./cli.js",
   "author": "Daniel O'Connor <daniel@danoc.me> (https://danoc.me/)",
@@ -32,9 +32,9 @@
     "glob": "^5.0.14",
     "gonzales-pe": "3.4.7",
     "is-number": "^2.0.2",
-    "lodash": "^3.10.1",
-    "node-sass": "^3.2.0",
-    "sass-mapper": "^1.0.0",
+    "lodash": "^4.17.14",
+    "node-sass": "^4.12.0",
+    "sass-mapper": "git://github.com/optimizely/sass-mapper#1.0.2",
     "shelljs": "^0.5.1"
   }
 }
