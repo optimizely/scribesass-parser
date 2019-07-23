@@ -1,6 +1,6 @@
 {
   "name": "scribesass-parser",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Parse SCSS comments and return a JSON object.",
   "main": "index.js",
   "scripts": {
